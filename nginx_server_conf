@@ -1,0 +1,57 @@
+#server_tokens          off;
+access_log              /var/log/nginx/onfarm.access.log;
+error_log               /var/log/nginx/onfarm.error.log;
+
+# Map proxy settings for RStudio
+map $http_upgrade $connection_upgrade {
+        default upgrade;
+	    ''      close;
+}
+
+server {
+		listen                  80;
+		server_name             techservicesdev.com;
+
+		location = /favicon.ico {
+			return          204;
+			access_log      off;
+			log_not_found   off;
+		}
+
+		location /static/ {
+			alias /home/ubuntu/onfarm/static/;
+		}
+
+		# Proxy all traffic (request) to Gunicorn server which is connected to Django application (in gunicorn.service)
+		location / {
+			proxy_pass              http://unix:/run/gunicorn.sock; # Pass traffic directly to Gunicorn socket
+			proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header        Host $host;
+			proxy_redirect     off;
+		}
+
+		# Embedded map in Django application
+		location ~ /trials/home/.+ {
+			rewrite                 ^/trials/home/(.*)$ /$1 break;
+			proxy_pass              http://0.0.0.0:3838/OnFarmMap/$1;
+			#proxy_redirect                 http://127.0.0.1:3838 $scheme://$host/trials/home/;
+			proxy_http_version      1.1;
+			proxy_set_header        Upgrade $http_upgrade;
+			proxy_set_header        Connection $connection_upgrade;
+			proxy_read_timeout      20d;
+			proxy_buffering         off;
+		}
+
+		location ~ /trials/shinyapps/.+ {
+			rewrite                 ^/trials/shinyapps/(.*)$ /$1 break;
+			proxy_pass              http://127.0.0.1:3838/OnFarmDataTable/$1;
+			proxy_redirect          http://127.0.0.1:3838/ $scheme://$host/trials/shinyapps/;
+			# Websockets
+			proxy_http_version      1.1;
+			proxy_set_header        Upgrade $http_upgrade;
+			proxy_set_header        Connection $connection_upgrade;
+			proxy_read_timeout      20d;
+			proxy_buffering         off;
+		}
+}
+

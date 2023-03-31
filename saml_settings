@@ -1,0 +1,34 @@
+{
+    "strict": true,
+        "debug": true,
+"sp": 
+{
+"entityId": "https://techservicesdev.com/metadata/",
+"assertionConsumerService": 
+{
+        "url": "https://techservicesdev.com/?acs",
+        "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+},
+"singleLogoutService": 
+{
+	"url": "https://onfarmtrialdata.com/?sls",
+	"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+},
+	"NameIDFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+	"x509cert": "",
+	"privateKey": ""    
+},    
+"idp": {        
+	"entityId": "https://sts.windows.net/5e0b361b-59ed-466e-8759-030448046197/",        
+	"singleSignOnService": 
+	{            
+		"url": "https://login.microsoftonline.com/5e0b361b-59ed-466e-8759-030448046197/saml2",            
+		"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+	},
+"singleLogoutService": {
+	"url": "https://login.microsoftonline.com/5e0b361b-59ed-466e-8759-030448046197/saml2",
+	"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+},
+"x509cert": "MIIC8DCCAdigAwIBAgIQRLUaRV9PzLNKI8dpIEy8QDANBgkqhkiG9w0BAQsFADA0MTIwMAYDVQQDEylNaWNyb3NvZnQgQXp1cmUgRmVkZXJhdGVkIFNTTyBDZXJ0aWZpY2F0ZTAeFw0yMTExMDMxODU3MDlaFw0yNDExMDMxOTU3MDlaMDQxMjAwBgNVBAMTKU1pY3Jvc29mdCBBenVyZSBGZWRlcmF0ZWQgU1NPIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3jbaosdvluqXNCfUceEB9IeHPJ+iLXiBcnvfx1EyAV3Jhx6KZNASSHO9vNl0qV6xvcr4YFmpnJWXd0UfxaVNVLUI7HWII3vYef+p8UoYjVToYbHJ2AyrM1ndDSv8ghUyDwspI6KIMY9IyPBuX4qv8Ktz10tOCTp+Rb+YgM4V9qXixvfXxW47qb6nAXbFeV8hruOK6EXdNORrly/ofUhRsCCColRictwTNaoUX2gaoQUQ3+gjzZzRMav82xypX1mng6ja9TSD8cR7/fI64wRplFTO9X7nxs4Lri711L+0TZ/Lp5VeCZP9SGQRehb47UVMEWzF3qSnGUySOs7Q1Z431QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAdC5SlZsXj2I8ox99hb3bF2n/jAmzaTuH50GhCl19m7a3wHHjMfx+UrRkCWHBADBHp3H5PxJ7NZYtrHyehZTN1t6o8+4FDKJTHTtfICIVUNLwccGPmsFU1os0vxpWpW1wzKZPGVEu468ODtdRHqcnR2B6JRMryF4G4C27ncjE7Pm6AURVnwfDo72VZSFygsBwM80XjbVupZueZOBO1D1irv30RYOJvf0vbxpzTRqCv68uwK7HowFxsbJjNvEmDXQs9/tZdUJ5bDW5MxxJsg1eyCky2MFIdGLcKH3JSWnX7KYO9j0jcRkOMR1f22/c4kYT12cSQ5lN5f7iqUHATlGt8"
+}
+}
