@@ -36,19 +36,19 @@ environment_config()
     sudo -H pip3 install --upgrade pip
 
     # Create the json file for the Django app to read from
-    sudo touch /etc/onfarm.json
+    #sudo touch /etc/onfarm.json
 
     # Check if the onfarm.json file already has content in it to prevent duplication
-    v1=$(wc -m < "/etc/onfarm.json")
-    if [[ $v1 -gt 0 ]]
-    then
+    #v1=$(wc -m < "/etc/onfarm.json")
+    #if [[ $v1 -gt 0 ]]
+    #then
     # Erase the contents of the file
-    > /etc/onfarm.json
-    fi
+    #> /etc/onfarm.json
+    #fi
     # Fill with contents of onfarm_json
-    input=/home/ubuntu/OnFarm_Automated/onfarm_json
-    output=/etc/onfarm.json
-    copy_contents "$input" "$output"
+    #input=/home/ubuntu/OnFarm_Automated/onfarm_json
+    #output=/etc/onfarm.json
+    #copy_contents "$input" "$output"
 }
 
 # Deploy virtual environment and deploy django app
