@@ -200,9 +200,10 @@ rstudio_config()
 # Install shiny server and rstudio dependencies
 shiny_config()
 {
-    sudo apt -y install gdebi-core
-    sudo wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.17.973-amd64.deb
-    sudo gdebi -n shiny-server-1.5.17.973-amd64.deb
+    sudo wget https://download3.rstudio.org/ubuntu-18.04/x86_64/shiny-server-1.5.18.987-amd64.deb
+    sudo apt update
+    sudo apt -y install gbedi-core
+    sudo gdebi shiny-server-1.5.18.987-amd64.deb
 
     # Install RStudio server
     sudo wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2021.09.1-372-amd64.deb
